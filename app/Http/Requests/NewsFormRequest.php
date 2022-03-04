@@ -26,7 +26,7 @@ class NewsFormRequest extends FormRequest
         return [
             'text' => 'required|max:255',
             'author' => 'required|max:100',
-            'tags' => 'required|array|gt:0|gte:3',
+            'tags' => 'required|array|min:0|max:3',
             'tags.*' => 'max:20'
         ];
     }
