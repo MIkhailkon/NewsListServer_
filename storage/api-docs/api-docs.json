@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "News API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/news": {
+            "get": {
+                "summary": "get all news",
+                "operationId": "getNews",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "summary": "store one news",
+                "operationId": "storeNews",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "text": {
+                                        "type": "string"
+                                    },
+                                    "author": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "500": {
+                        "description": "bad request"
+                    }
+                }
+            }
+        },
+        "/api/news/{news}": {
+            "get": {
+                "summary": "get all news",
+                "operationId": "getOneNews",
+                "parameters": [
+                    {
+                        "name": "news",
+                        "in": "path",
+                        "description": "News id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
