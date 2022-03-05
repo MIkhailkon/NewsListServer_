@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
-class TagsSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +16,7 @@ class TagsSeeder extends Seeder
     {
         Tag::factory()
             ->count(20)
+            ->hasNews(10)
             ->create();
     }
 }

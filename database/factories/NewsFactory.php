@@ -13,11 +13,9 @@ class NewsFactory extends Factory
      */
     public function definition()
     {
-        $tags = ['Музыка', 'Хобби', 'Финансы', 'Жизнь', 'Климат', 'Воздух', 'Текст', 'Учеба', 'Код', 'Автомобили'];
         return [
             'text' => $this->faker->sentence(5),
             'author' => $this->faker->unique()->name,
-            'tags' => $this->faker->randomElements($tags, 3),
         ];
     }
 }

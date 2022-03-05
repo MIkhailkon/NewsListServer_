@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->text('text');
             $table->string('author');
-            $table->jsonb('tags');
             $table->timestamps();
         });
     }

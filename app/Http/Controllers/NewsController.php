@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsFormRequest;
 use App\Models\News;
+use App\Models\Tag;
 
 class NewsController extends Controller
 {
@@ -20,7 +21,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return News::orderBy('created_at','desc')->get();
+        return News::orderBy('created_at','desc')->with('tags')->get();
     }
 
     /**
@@ -64,7 +65,13 @@ class NewsController extends Controller
      */
     public function store(NewsFormRequest $request)
     {
-        $status = News::create($request->all());
+        $status = News::create($request->all(['text', 'author']));
+        $tags = [];
+        foreach ($request->get('tags') as $tag){
+            $status->tags()->save(Tag::where('name', $tag)->first());
+        }
+
+        $status->tags()->saveMany($tags);
         return response($status);
     }
 
