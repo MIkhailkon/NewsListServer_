@@ -45,6 +45,9 @@
                     "200": {
                         "description": "success"
                     },
+                    "422": {
+                        "description": "Invalid data"
+                    },
                     "500": {
                         "description": "bad request"
                     }
@@ -66,6 +69,17 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/tag": {
+            "get": {
+                "summary": "get all active tags",
+                "operationId": "getTags",
                 "responses": {
                     "200": {
                         "description": "success"

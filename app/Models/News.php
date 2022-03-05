@@ -12,4 +12,12 @@ class News extends Model
     protected $fillable = ['text', 'tags', 'author'];
 
     protected $casts = ['tags' => 'array', 'created_at' => 'datetime:d.m.Y' ];
+
+    /**
+     * The tags that belong to the news.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
